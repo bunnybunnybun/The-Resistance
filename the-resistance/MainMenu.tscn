@@ -1,0 +1,82 @@
+[gd_scene load_steps=3 format=3 uid="uid://dosqxnixp8bbc"]
+
+[ext_resource type="Script" uid="uid://c7dfw3c2v8r1v" path="res://main_menu.gd" id="1_i26rj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_kjwba"]
+font_size = 50
+font_color = Color(0.69411767, 0, 0, 1)
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_i26rj")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.20784314, 0.20392157, 1)
+
+[node name="TitleLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -204.0
+offset_top = 77.0
+offset_right = 204.0
+offset_bottom = 146.0
+grow_horizontal = 2
+text = "The Resistance"
+label_settings = SubResource("LabelSettings_kjwba")
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -95.5
+offset_top = -88.0
+offset_right = 95.5
+offset_bottom = 127.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 70
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 215.0
+offset_top = 419.0
+offset_right = 362.0
+offset_bottom = 484.0
+
+[node name="TextEdit" type="TextEdit" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -252.0
+offset_top = -140.0
+offset_right = 253.0
+offset_bottom = 86.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.33665636, 0.78083885, 0.3151847, 1)
+text = "[user@computer ~]$ "
+emoji_menu_enabled = false
+wrap_mode = 1
+scroll_smooth = true
+
+[connection signal="gui_input" from="TextEdit" to="." method="_on_text_edit_gui_input"]
