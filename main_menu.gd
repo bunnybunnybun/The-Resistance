@@ -18,11 +18,15 @@ func _on_LineEdit_gui_input(event):
 		text_edit.accept_event()
 		
 		var line_count = text_edit.get_line_count()
+		var prompt = "[user@computer ~]$ "
 		var command = ""
 		for i in range(line_count - 1, -1, -1):
 			var line = text_edit.get_line(i)
 			if not line.is_empty():
-				command = line
+				if line.begins_with(prompt):
+					command = line.substr(prompt.length(), line.length() - prompt.length()).strip_edges()
+				else:
+					command = line.strip_edges()
 				break
 	
 		if command == "quit":
