@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dosqxnixp8bbc"]
+[gd_scene load_steps=4 format=3 uid="uid://dosqxnixp8bbc"]
 
 [ext_resource type="Script" uid="uid://c7dfw3c2v8r1v" path="res://main_menu.gd" id="1_i26rj"]
+[ext_resource type="Texture2D" uid="uid://kvfn1n2gg47j" path="res://images/main_menu_surveillance_camera_and_pole.png" id="2_eiy7p"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_kjwba"]
 font_size = 50
@@ -56,5 +57,16 @@ text = "[user@computer ~]$ "
 emoji_menu_enabled = false
 wrap_mode = 1
 scroll_smooth = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -642.0
+offset_right = 321.0
+grow_vertical = 0
+texture = ExtResource("2_eiy7p")
 
 [connection signal="gui_input" from="TextEdit" to="." method="_on_text_edit_gui_input"]
