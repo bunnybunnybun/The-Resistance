@@ -53,7 +53,8 @@ offset_bottom = 86.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.33665636, 0.78083885, 0.3151847, 1)
-text = "[user@computer ~]$ "
+text = "Welcome to The Resistance. Enter the command 'setuser <username>' to set your username, and 'setcomputer <computer name>' to set the name of your computer. Type 'play' to start. To close the application, enter 'quit'. Type 'help' to see this help menu again.
+[user@computer ~]$ "
 emoji_menu_enabled = false
 wrap_mode = 1
 scroll_smooth = true
