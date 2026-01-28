@@ -1,11 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://dosqxnixp8bbc"]
+[gd_scene load_steps=5 format=3 uid="uid://dosqxnixp8bbc"]
 
 [ext_resource type="Script" uid="uid://c7dfw3c2v8r1v" path="res://main_menu.gd" id="1_i26rj"]
-[ext_resource type="Texture2D" uid="uid://kvfn1n2gg47j" path="res://images/main_menu_surveillance_camera_and_pole.png" id="2_eiy7p"]
+[ext_resource type="Texture2D" uid="uid://b7kjcg6ajlfcv" path="res://images/main_menu_background.png" id="2_eiy7p"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_kjwba"]
 font_size = 50
 font_color = Color(0.69411767, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eiy7p"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -17,6 +19,7 @@ grow_vertical = 2
 script = ExtResource("1_i26rj")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+z_index = -2
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -31,43 +34,47 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -204.0
-offset_top = 77.0
+offset_top = 39.0
 offset_right = 204.0
-offset_bottom = 146.0
+offset_bottom = 108.0
 grow_horizontal = 2
 text = "The Resistance"
 label_settings = SubResource("LabelSettings_kjwba")
 horizontal_alignment = 1
 
+[node name="TextureRect2" type="TextureRect" parent="."]
+z_index = -1
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_eiy7p")
+
 [node name="TextEdit" type="TextEdit" parent="."]
+z_index = 1
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -252.0
-offset_top = -140.0
-offset_right = 253.0
-offset_bottom = 86.0
+offset_left = -201.0
+offset_top = -103.0
+offset_right = 201.0
+offset_bottom = 106.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.33665636, 0.78083885, 0.3151847, 1)
+theme_override_colors/background_color = Color(0, 0, 0, 0)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_eiy7p")
 text = "Welcome to The Resistance. Enter the command 'setuser <username>' to set your username, and 'setcomputer <computer name>' to set the name of your computer. Type 'play' to start. To close the application, enter 'quit'. Type 'help' to see this help menu again.
 [user@computer ~]$ "
 emoji_menu_enabled = false
 wrap_mode = 1
 scroll_smooth = true
-
-[node name="TextureRect" type="TextureRect" parent="."]
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -642.0
-offset_right = 321.0
-grow_vertical = 0
-texture = ExtResource("2_eiy7p")
 
 [connection signal="gui_input" from="TextEdit" to="." method="_on_text_edit_gui_input"]
