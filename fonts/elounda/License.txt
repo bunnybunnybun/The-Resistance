@@ -1,5 +1,6 @@
-Copyright (c) 2024, YasenVN (yasennestorov@abv.bg),
-with Reserved Font Name "Charito".
+Copyright (c) 2024, Silverblur_type (https://github.com/silverblurtype | vlrntype@gmail.com)
+
+
 
 This Font Software is licensed under the SIL Open Font License, Version 1.1.
 This license is copied below, and is also available with a FAQ at:

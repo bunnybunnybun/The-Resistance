@@ -1,15 +1,33 @@
 extends Label
 
 @onready var label: = $"."
+@onready var label2: = $"../Label2"
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var tween_speed: float = text.length()*0.05 
+	print("Ready!")
+	var tween_speed: float = text.length()*0.02
 	visible_ratio = 0.0
 	var tween = create_tween()
 	tween.set_trans(Tween.TRANS_LINEAR)
 	tween.tween_property(label, "visible_ratio", 1.0, tween_speed)
+	tween.finished.connect(on_tween_finish)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+func on_tween_finish():
+	label2.visible = true
+	
+func _input(event):
+	if Input.is_action_just_pressed("ui_accept") and label2.visible == true:
+		print("Space pressed")
+		label.visible_ratio = 0.0
+		label2.visible = false
+		label.text = "You want to help with the resistance, yeah? Well you're gonna need to learn how to hack, so we can take down their systems.\nModern computers have a backdoor in them, that the government uses to spy on us civilians, so you'll have to settle for this very old computer. You may notice it uses a CRT display, and doesn't have a GUI...\nI'm sure it's not what you're used to, but it will do for our purposes."
+		var tween_speed: float = text.length()*0.02
+		var tween = create_tween()
+		tween.set_trans(Tween.TRANS_LINEAR)
+		tween.tween_property(label, "visible_ratio", 1.0, tween_speed)
+		tween.finished.connect(on_tween_finish)

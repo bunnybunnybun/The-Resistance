@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://ct0auvbtgb4e6"
-path="res://.godot/imported/Charito.ttf-feeb2e7e14d7078cc2d65ab63ff557f7.fontdata"
+uid="uid://b3gueu447qavs"
+path="res://.godot/imported/Elounda-Regular.ttf-c174bad433f0260faaea5f0b9f3c27ae.fontdata"
 
 [deps]
 
-source_file="res://fonts/charito/Charito.ttf"
-dest_files=["res://.godot/imported/Charito.ttf-feeb2e7e14d7078cc2d65ab63ff557f7.fontdata"]
+source_file="res://fonts/elounda/font/Elounda-Regular.ttf"
+dest_files=["res://.godot/imported/Elounda-Regular.ttf-c174bad433f0260faaea5f0b9f3c27ae.fontdata"]
 
 [params]
 
