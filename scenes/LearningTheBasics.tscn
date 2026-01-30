@@ -1,0 +1,88 @@
+[gd_scene load_steps=4 format=3 uid="uid://dgsprvle6pp3a"]
+
+[ext_resource type="FontFile" uid="uid://cq7xuv6m3nemf" path="res://fonts/elounda/font/Elounda-Regular.otf" id="1_gx0hm"]
+[ext_resource type="Script" uid="uid://brdv4x3esgy57" path="res://tutorial_label.gd" id="2_gx0hm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e3xd5"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.13496712, 0.11028875, 0.21170008, 1)
+
+[node name="TextEdit" type="TextEdit" parent="."]
+z_index = 1
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -201.0
+offset_top = -104.5
+offset_right = 201.0
+offset_bottom = 104.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/caret_color = Color(0.3372549, 0.78039217, 0.3137255, 1)
+theme_override_colors/font_color = Color(0.33665636, 0.78083885, 0.3151847, 1)
+theme_override_colors/font_outline_color = Color(0.23449251, 0.5420099, 1.92523e-07, 1)
+theme_override_colors/background_color = Color(0, 0, 0, 0)
+theme_override_constants/outline_size = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_e3xd5")
+text = "[user@computer ~]$ "
+emoji_menu_enabled = false
+wrap_mode = 1
+scroll_smooth = true
+caret_type = 1
+caret_blink = true
+caret_blink_interval = 1.0
+caret_multiple = false
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 1
+offset_left = 50.0
+offset_top = 410.0
+offset_right = 285.0
+offset_bottom = 438.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_font_sizes/font_size = 18
+text = "Press space to continue..."
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 290.0
+offset_bottom = 385.0
+theme_override_colors/font_color = Color(0.7711869, 0.8070242, 0.9878445, 1)
+theme_override_colors/font_shadow_color = Color(0.33258724, 0.1284658, 0.7799957, 0.89411765)
+theme_override_fonts/font = ExtResource("1_gx0hm")
+theme_override_font_sizes/font_size = 20
+text = "It's 2042. The government has become an authoritarian regime. They have cameras, trackers in all electronical devices, and they know where you are and what you are doing at all times, just like the books of ol' warned us of.
+        
+They're pretty bad...            
+obviously."
+autowrap_mode = 3
+script = ExtResource("2_gx0hm")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 290.0
+offset_bottom = 440.0

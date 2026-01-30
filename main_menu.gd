@@ -32,7 +32,7 @@ func _on_LineEdit_gui_input(event):
 		if command == "quit":
 			get_tree().quit()
 		elif command == "play":
-			get_tree().change_scene_to_file("res://scene2.tscn")
+			get_tree().change_scene_to_file("res://scenes/IntroDialog.tscn")
 		elif command == "help":
 			text_edit.text = text_edit.text + "\nWelcome to The Resistance. Enter the command 'setuser <username>' to set your username, and 'setcomputer <computer name>' to set the name of your computer. Type 'play' to start. To close the application, enter 'quit'. Type 'help' to see this help menu again."
 		else:

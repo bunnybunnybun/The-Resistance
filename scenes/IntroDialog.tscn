@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c10ly7icxihtw"]
 
-[ext_resource type="FontFile" uid="uid://cq7xuv6m3nemf" path="res://fonts/elounda/font/Elounda-Regular.otf" id="1_3hvph"]
-[ext_resource type="Script" uid="uid://b56gt8twdwi8y" path="res://label.gd" id="1_g28hq"]
+[ext_resource type="FontFile" uid="uid://cq7xuv6m3nemf" path="res://fonts/elounda/font/Elounda-Regular.otf" id="1_xkam6"]
+[ext_resource type="Script" uid="uid://b56gt8twdwi8y" path="res://label.gd" id="2_g2clt"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -35,14 +35,14 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.7711869, 0.8070242, 0.9878445, 1)
 theme_override_colors/font_shadow_color = Color(0.33258724, 0.1284658, 0.7799957, 0.89411765)
-theme_override_fonts/font = ExtResource("1_3hvph")
+theme_override_fonts/font = ExtResource("1_xkam6")
 theme_override_font_sizes/font_size = 32
 text = "It's 2042. The government has become an authoritarian regime. They have cameras, trackers in all electronical devices, and they know where you are and what you are doing at all times, just like the books of ol' warned us of.
         
 They're pretty bad...            
 obviously."
 autowrap_mode = 3
-script = ExtResource("1_g28hq")
+script = ExtResource("2_g2clt")
 
 [node name="Label2" type="Label" parent="."]
 visible = false
