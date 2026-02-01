@@ -2,9 +2,13 @@ extends Label
 
 @onready var label: = $"."
 @onready var label2: = $"../Label2"
+@onready var disclaimer = $"../Label3"
 @onready var current_dialog = "1"
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	await get_tree().create_timer(8.0).timeout
+	disclaimer.visible = false
+	label.visible = true
 	print("Ready!")
 	var tween_speed: float = text.length()*0.02
 	visible_ratio = 0.0

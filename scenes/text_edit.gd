@@ -69,7 +69,7 @@ func _on_LineEdit_gui_input(event):
 			elif current is Array:
 				for item in current:
 					text_edit.text += item + "\n"
-		elif command == "cd":
+		elif command == "cd": # Yes, this command is quite janky (like everything). I should redo it at some point, but I'll never finish if I try perfecting everything D:
 			var new_path = current_path
 			if !new_path.ends_with("/"):
 				new_path += "/"
