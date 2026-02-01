@@ -22,7 +22,7 @@ func on_tween_finish():
 	label2.visible = true
 	
 func _input(event):
-	if Input.is_action_just_pressed("ui_accept") and label2.visible == true:
+	if Input.is_action_just_pressed("continue_in_dialog") and label2.visible == true:
 		print("Space pressed. Current dialog is " + current_dialog)
 		label.visible_ratio = 0.0
 		label2.visible = false

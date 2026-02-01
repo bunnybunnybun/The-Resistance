@@ -1,12 +1,5 @@
 extends Control
 
-func _on_play_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://scene2.tscn")
-
-
-func _on_quit_button_pressed() -> void:
-	get_tree().quit()
-
 @onready var text_edit: TextEdit = $TextEdit
 @onready var label: Label = $Label
 
