@@ -60,7 +60,11 @@ func _on_LineEdit_gui_input(event):
 			
 			for part in path_parts:
 				if not current.has(part):
-					text_edit.text += "No such file or directory"
+					text_edit.text += "\nNo such file or directory"
+					text_edit.text = text_edit.text + "\n[user@computer ~]$ "
+					var last_line = text_edit.get_line_count() - 1
+					text_edit.set_caret_line(last_line)
+					text_edit.set_caret_column(text_edit.get_line(last_line).length())
 					return
 				current = current[part]
 			
@@ -87,13 +91,19 @@ func _on_LineEdit_gui_input(event):
 					if arg == "..":
 						path_parts.remove_at(path_parts.size() - 1)
 					elif arg == "../..":
-						path_parts.remove_at(path_parts.size() - 2)
+						path_parts.remove_at(path_parts.size() - 1)
+						path_parts.remove_at(path_parts.size() - 1)
 					elif arg == "../../..":
-						path_parts.remove_at(path_parts.size() - 3)
+						path_parts.remove_at(path_parts.size() - 1)
+						path_parts.remove_at(path_parts.size() - 1)
+						path_parts.remove_at(path_parts.size() - 1)
 					elif arg == "../../../..":
-						path_parts.remove_at(path_parts.size() - 4)
+						path_parts.remove_at(path_parts.size() - 1)
+						path_parts.remove_at(path_parts.size() - 1)
+						path_parts.remove_at(path_parts.size() - 1)
+						path_parts.remove_at(path_parts.size() - 1)
 					
-				current_path = "/".join(path_parts) if path_parts.size() > 0 else "/"
+				current_path = "/" + "/".join(path_parts) if path_parts.size() > 0 else "/"
 				print(current_path)
 			elif arg.begins_with("/"):
 				new_path = arg
@@ -169,6 +179,8 @@ func _on_LineEdit_gui_input(event):
 			
 			if arg:
 				current.erase(arg)
+		elif command == "pwd":
+			text_edit.text += "\n" + current_path
 		elif command == "":
 			null
 		else:

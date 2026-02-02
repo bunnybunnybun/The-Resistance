@@ -31,7 +31,7 @@ func _input(event):
 		if current_dialog == "1":
 			current_dialog = "2"
 			label.text = "Speaking of directories, let's see what's [i]inside[/i] the current directory. You can do this by using the command 'ls'. It will print the names of all folders and files within the current directory."
-			var tween_speed: float = text.length()*0.04s
+			var tween_speed: float = text.length()*0.04
 			var tween = create_tween()
 			tween.set_trans(Tween.TRANS_LINEAR)
 			tween.tween_property(label, "visible_ratio", 1.0, tween_speed)
