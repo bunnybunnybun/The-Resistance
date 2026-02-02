@@ -21,12 +21,7 @@ extends Control
 			}
 		}
 	}
-#"home": ["Documents", "Downloads"],
-	#"Documents": ["Secrets.txt", "placehold.txt"],
-	#"Downloads": ["bird.png", "not_malware.zip", "rabbit.png"]
-#@onready var home = ["Documents", "Downloads"]
 @onready var current_path = "/home/user"
-#@onready var Documents = ["Secrets.txt", "placehold.txt"]
 
 func _ready():
 	text_edit.gui_input.connect(_on_LineEdit_gui_input)
@@ -141,8 +136,39 @@ func _on_LineEdit_gui_input(event):
 					current_path = new_path
 				else: text_edit.text += '\ncd: The directory "' + arg + '" does not exist'
 				
-		elif command == "help":
-			text_edit.text = text_edit.text + "\nWelcome to The Resistance. Enter the command 'setuser <username>' to set your username, and 'setcomputer <computer name>' to set the name of your computer. Type 'play' to start. To close the application, enter 'quit'. Type 'help' to see this help menu again."
+		elif command == "touch":
+			var current = directories["/"]
+			var path_parts = []
+			
+			for part in current_path.split("/"):
+				if !part.is_empty():
+					path_parts.append(part)
+			
+			for part in path_parts:
+				if not current.has(part):
+					text_edit.text += "No such file or directory"
+					return
+				current = current[part]
+			
+			if arg:
+				current[arg] = ""
+		
+		elif command == "rm":
+			var current = directories["/"]
+			var path_parts = []
+			
+			for part in current_path.split("/"):
+				if !part.is_empty():
+					path_parts.append(part)
+			
+			for part in path_parts:
+				if not current.has(part):
+					text_edit.text += "No such file or directory"
+					return
+				current = current[part]
+			
+			if arg:
+				current.erase(arg)
 		elif command == "":
 			null
 		else:
