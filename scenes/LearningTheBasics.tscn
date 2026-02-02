@@ -33,10 +33,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -201.0
-offset_top = -104.5
-offset_right = 201.0
-offset_bottom = 104.5
+offset_left = -307.60168
+offset_top = -229.375
+offset_right = 307.60168
+offset_bottom = 229.375
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/caret_color = Color(0.3372549, 0.78039217, 0.3137255, 1)
@@ -57,37 +57,30 @@ script = ExtResource("1_2qdsd")
 
 [node name="Label2" type="Label" parent="."]
 layout_mode = 1
-offset_left = 50.0
+offset_left = 20.0
 offset_top = 600.0
-offset_right = 285.0
-offset_bottom = 628.0
+offset_right = 281.0
+offset_bottom = 635.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 25
 text = "Press f1 to continue..."
-
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 1
-offset_left = 20.0
-offset_top = 20.0
-offset_right = 290.0
-offset_bottom = 440.0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 1
 offset_left = 20.0
 offset_top = 20.0
-offset_right = 290.0
-offset_bottom = 554.0
+offset_right = 410.0
+offset_bottom = 611.0
 theme_override_colors/default_color = Color(0.77254903, 0.80784315, 0.9882353, 1)
 theme_override_colors/font_shadow_color = Color(0.33333334, 0.12941177, 0.78039217, 0.89411765)
 theme_override_fonts/normal_font = ExtResource("1_gx0hm")
 theme_override_fonts/italics_font = ExtResource("3_m2iv7")
-theme_override_font_sizes/normal_font_size = 20
-theme_override_font_sizes/bold_font_size = 20
-theme_override_font_sizes/bold_italics_font_size = 20
-theme_override_font_sizes/italics_font_size = 20
-theme_override_font_sizes/mono_font_size = 20
+theme_override_font_sizes/normal_font_size = 26
+theme_override_font_sizes/bold_font_size = 26
+theme_override_font_sizes/bold_italics_font_size = 26
+theme_override_font_sizes/italics_font_size = 26
+theme_override_font_sizes/mono_font_size = 26
 bbcode_enabled = true
 text = "You look like you don't even know where to start with using this machine... Let me teach you the basics.
 
