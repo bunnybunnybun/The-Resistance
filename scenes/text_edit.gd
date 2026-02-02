@@ -3,22 +3,29 @@ extends Control
 @onready var text_edit: TextEdit = $"."
 @onready var directories = {
 	"/": {
-		"boot": [],
-		"dev": [],
-		"etc": [],
+		"boot": {},
+		"dev": {},
+		"etc": {},
 		"home": {
 			"user": {
-				"Documents": ["Secrets.txt", "placehold.txt"],
-			 	"Downloads": ["bird.png", "not_malware.zip", "rabbit.png"]
+				"Documents": {
+					"Secrets.txt": "HAHA you thought you could discover my deepest secrets?", 
+					"placehold.txt": "this is a placeholder"
+					},
+			 	"Downloads": {
+					"bird.png": "This is supposed to be an image of a bird, but pngs aren't supported!",
+					"not_malware.zip": "This is very legit.", 
+					"rabbit.png": "Bunnies are so fluffy and cute!"
+					}
+				}
 			}
 		}
 	}
-}
 #"home": ["Documents", "Downloads"],
 	#"Documents": ["Secrets.txt", "placehold.txt"],
 	#"Downloads": ["bird.png", "not_malware.zip", "rabbit.png"]
 #@onready var home = ["Documents", "Downloads"]
-@onready var current_path = "/"
+@onready var current_path = "/home/user"
 #@onready var Documents = ["Secrets.txt", "placehold.txt"]
 
 func _ready():
@@ -77,7 +84,6 @@ func _on_LineEdit_gui_input(event):
 			if arg == ".":
 				null
 			elif arg.begins_with("..") and current_path != "/":
-				print("test succesful")
 				var path_parts = []
 				for path in current_path.split("/"):
 					if !path.is_empty():
@@ -94,6 +100,26 @@ func _on_LineEdit_gui_input(event):
 					
 				current_path = "/".join(path_parts) if path_parts.size() > 0 else "/"
 				print(current_path)
+			elif arg.begins_with("/"):
+				new_path = arg
+				
+				var current = directories["/"]
+				var path_parts = []
+				for path in new_path.split("/"):
+					if !path.is_empty():
+						path_parts.append(path)
+				var path_exists = true
+				
+				for part in path_parts:
+					if current.has(part):
+						current = current[part]
+					else:
+						path_exists = false
+						break
+				
+				if path_exists and current is Dictionary:
+					current_path = new_path
+				else: text_edit.text += '\ncd: The directory "' + arg + '" does not exist'
 			else:
 				new_path += arg
 				
