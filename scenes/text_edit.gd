@@ -31,15 +31,15 @@ func _on_LineEdit_gui_input(event):
 		text_edit.accept_event()
 		
 		var line_count = text_edit.get_line_count()
-		var prompt = "[user@computer ~]$ "
 		var full_command = ""
 		var command = ""
 		var arg = ""
 		for i in range(line_count - 1, -1, -1):
 			var line = text_edit.get_line(i)
 			if not line.is_empty():
-				if line.begins_with(prompt):
-					full_command = line.substr(prompt.length(), line.length() - prompt.length()).strip_edges()
+				var dollar_pos = line.find("$")
+				if dollar_pos != -1:
+					full_command = line.substr(dollar_pos + 1, line.length() - dollar_pos - 1).strip_edges()
 				else:
 					full_command = line.strip_edges()
 					
@@ -181,12 +181,17 @@ func _on_LineEdit_gui_input(event):
 				current.erase(arg)
 		elif command == "pwd":
 			text_edit.text += "\n" + current_path
+		elif command == "clear":
+			text_edit.text = "[user@computer " + current_path + "]$ "
+			var last_line = text_edit.get_line_count() - 1
+			text_edit.set_caret_column(text_edit.get_line(last_line).length())
+			return
 		elif command == "":
 			null
 		else:
 			text_edit.text = text_edit.text + "\nbash: " + command + ": command not found"
 		
-		text_edit.text = text_edit.text + "\n[user@computer ~]$ "
+		text_edit.text = text_edit.text + "\n[user@computer " + current_path +"]$ "
 		var last_line = text_edit.get_line_count() - 1
 		text_edit.set_caret_line(last_line)
 		text_edit.set_caret_column(text_edit.get_line(last_line).length())

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c10ly7icxihtw"]
 
-[ext_resource type="FontFile" uid="uid://cq7xuv6m3nemf" path="res://fonts/elounda/font/Elounda-Regular.otf" id="1_xkam6"]
+[ext_resource type="FontFile" uid="uid://ch8t435m137eh" path="res://fonts/Tomorrow/Tomorrow-Regular.ttf" id="1_xkam6"]
 [ext_resource type="Script" uid="uid://b56gt8twdwi8y" path="res://label.gd" id="2_g2clt"]
 
 [node name="Control" type="Control"]
