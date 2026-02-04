@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dvlamqsyyej88"]
 
-[ext_resource type="Script" uid="uid://c7dfw3c2v8r1v" path="res://main_menu.gd" id="1_i26rj"]
+[ext_resource type="Script" uid="uid://c7dfw3c2v8r1v" path="res://scripts/main_menu.gd" id="1_i26rj"]
 [ext_resource type="Texture2D" uid="uid://b7kjcg6ajlfcv" path="res://images/main_menu_background.png" id="2_eiy7p"]
 [ext_resource type="FontFile" uid="uid://brxrvyhwbk85q" path="res://fonts/elounda/font/Elounda-Italic.ttf" id="3_h7a2f"]
 

@@ -7,7 +7,7 @@ extends Control
 		"dev": {},
 		"etc": {},
 		"home": {
-			"user": {
+			Global.username: {
 				"Documents": {
 					"Secrets.txt": "HAHA you thought you could discover my deepest secrets?", 
 					"placehold.txt": "this is a placeholder"
@@ -24,6 +24,7 @@ extends Control
 @onready var current_path = "/home/user"
 
 func _ready():
+	text_edit.text = "[" + Global.username + "@" + Global.computername + " " + current_path +"]$ "
 	text_edit.gui_input.connect(_on_LineEdit_gui_input)
 	
 func _on_LineEdit_gui_input(event):
@@ -182,7 +183,7 @@ func _on_LineEdit_gui_input(event):
 		elif command == "pwd":
 			text_edit.text += "\n" + current_path
 		elif command == "clear":
-			text_edit.text = "[user@computer " + current_path + "]$ "
+			text_edit.text = "\n[" + Global.username + "@" + Global.computername + " " + current_path +"]$ "
 			var last_line = text_edit.get_line_count() - 1
 			text_edit.set_caret_column(text_edit.get_line(last_line).length())
 			return
@@ -191,7 +192,7 @@ func _on_LineEdit_gui_input(event):
 		else:
 			text_edit.text = text_edit.text + "\nbash: " + command + ": command not found"
 		
-		text_edit.text = text_edit.text + "\n[user@computer " + current_path +"]$ "
+		text_edit.text = text_edit.text + "\n[" + Global.username + "@" + Global.computername + " " + current_path +"]$ "
 		var last_line = text_edit.get_line_count() - 1
 		text_edit.set_caret_line(last_line)
 		text_edit.set_caret_column(text_edit.get_line(last_line).length())
