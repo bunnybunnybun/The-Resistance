@@ -1,6 +1,6 @@
 extends Control
 
-@onready var dialogspeedslider: Slider = get_node("MainColorRect/Settings/DialogSpeedSlider")
+@onready var dialogspeedslider: Slider = get_node("MainColorRect/Settings/Settings/DialogSpeedSlider")
 
 func _ready():
 	dialogspeedslider.value = Global.dialog_speed_slider_value
@@ -55,3 +55,8 @@ func _on_dialog_speed_slider_value_changed(value: float):
 	elif value == 1:
 		Global.dialog_speed = 0.055
 		Global.dialog_speed_slider_value = 1
+
+
+func _on_back_button_pressed() -> void:
+	$MainColorRect/Main.show()
+	$MainColorRect/Settings.hide()
