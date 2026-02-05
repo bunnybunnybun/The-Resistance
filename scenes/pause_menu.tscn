@@ -1,9 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://c22nd57fwepa8"]
+[gd_scene load_steps=12 format=3 uid="uid://c22nd57fwepa8"]
 
 [ext_resource type="Script" uid="uid://dubshxneu4mdb" path="res://scenes/pause_menu.gd" id="1_myx47"]
 [ext_resource type="Shader" uid="uid://cy37b5576pvn5" path="res://scenes/pause_menu.gdshader" id="2_kukqi"]
 [ext_resource type="Texture2D" uid="uid://b14ib3allxbgq" path="res://images/pause_menu.png" id="3_kukqi"]
 [ext_resource type="Texture2D" uid="uid://dcv0qim7mxkuk" path="res://images/pause_menu_button.png" id="4_5d2l8"]
+[ext_resource type="Texture2D" uid="uid://kalb6fyb8sq" path="res://images/pause_menu_button_click.png" id="5_v4r4p"]
+[ext_resource type="Texture2D" uid="uid://jkfrtx7yncvs" path="res://images/pause_menu_button_hover.png" id="6_1s2dm"]
+[ext_resource type="Texture2D" uid="uid://ckrh7na86fasd" path="res://images/pause_menu_button_focused.png" id="7_1s2dm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5d2l8"]
 shader = ExtResource("2_kukqi")
@@ -170,6 +173,7 @@ texture = ExtResource("3_kukqi")
 stretch_mode = 5
 
 [node name="Settings" type="Control" parent="MainColorRect"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -221,7 +225,6 @@ theme_override_font_sizes/font_size = 26
 text = "↩ Back"
 
 [node name="Main" type="VBoxContainer" parent="MainColorRect"]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -241,6 +244,9 @@ alignment = 1
 custom_minimum_size = Vector2(0, 90)
 layout_mode = 2
 texture_normal = ExtResource("4_5d2l8")
+texture_pressed = ExtResource("5_v4r4p")
+texture_hover = ExtResource("6_1s2dm")
+texture_focused = ExtResource("7_1s2dm")
 stretch_mode = 5
 
 [node name="Label" type="Label" parent="MainColorRect/Main/Resume"]
@@ -263,6 +269,9 @@ text = "Resume"
 custom_minimum_size = Vector2(0, 90)
 layout_mode = 2
 texture_normal = ExtResource("4_5d2l8")
+texture_pressed = ExtResource("5_v4r4p")
+texture_hover = ExtResource("6_1s2dm")
+texture_focused = ExtResource("7_1s2dm")
 stretch_mode = 5
 
 [node name="Label" type="Label" parent="MainColorRect/Main/Settings"]
@@ -285,6 +294,9 @@ text = "Settings"
 custom_minimum_size = Vector2(0, 90)
 layout_mode = 2
 texture_normal = ExtResource("4_5d2l8")
+texture_pressed = ExtResource("5_v4r4p")
+texture_hover = ExtResource("6_1s2dm")
+texture_focused = ExtResource("7_1s2dm")
 stretch_mode = 5
 
 [node name="Label" type="Label" parent="MainColorRect/Main/Quit"]
