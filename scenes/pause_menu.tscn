@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://c22nd57fwepa8"]
+[gd_scene load_steps=9 format=3 uid="uid://c22nd57fwepa8"]
 
 [ext_resource type="Script" uid="uid://dubshxneu4mdb" path="res://scenes/pause_menu.gd" id="1_myx47"]
 [ext_resource type="Shader" uid="uid://cy37b5576pvn5" path="res://scenes/pause_menu.gdshader" id="2_kukqi"]
+[ext_resource type="Texture2D" uid="uid://b14ib3allxbgq" path="res://images/pause_menu.png" id="3_kukqi"]
+[ext_resource type="Texture2D" uid="uid://dcv0qim7mxkuk" path="res://images/pause_menu_button.png" id="4_5d2l8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5d2l8"]
 shader = ExtResource("2_kukqi")
@@ -149,8 +151,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MainColorRect" type="ColorRect" parent="."]
+[node name="MainColorRect" type="TextureRect" parent="."]
 modulate = Color(1, 1, 1, 0)
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -163,7 +166,8 @@ offset_right = 234.0
 offset_bottom = 283.75
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.2, 0.60784316, 0.8039216, 0.8156863)
+texture = ExtResource("3_kukqi")
+stretch_mode = 5
 
 [node name="Settings" type="Control" parent="MainColorRect"]
 layout_mode = 1
@@ -208,11 +212,11 @@ tick_count = 4
 ticks_on_borders = true
 
 [node name="BackButton" type="Button" parent="MainColorRect/Settings"]
-layout_mode = 0
-offset_left = -60.25
-offset_top = -81.0
-offset_right = 45.5
-offset_bottom = -27.0
+layout_mode = 1
+offset_left = -20.25
+offset_top = -59.0
+offset_right = 85.5
+offset_bottom = -5.0
 theme_override_font_sizes/font_size = 26
 text = "↩ Back"
 
@@ -233,21 +237,69 @@ grow_vertical = 2
 theme_override_constants/separation = 28
 alignment = 1
 
-[node name="Resume" type="Button" parent="MainColorRect/Main"]
+[node name="Resume" type="TextureButton" parent="MainColorRect/Main"]
 custom_minimum_size = Vector2(0, 90)
 layout_mode = 2
+texture_normal = ExtResource("4_5d2l8")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="MainColorRect/Main/Resume"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_font_sizes/font_size = 32
 text = "Resume"
 
-[node name="Settings" type="Button" parent="MainColorRect/Main"]
+[node name="Settings" type="TextureButton" parent="MainColorRect/Main"]
 custom_minimum_size = Vector2(0, 90)
 layout_mode = 2
+texture_normal = ExtResource("4_5d2l8")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="MainColorRect/Main/Settings"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_font_sizes/font_size = 32
 text = "Settings"
 
-[node name="Quit" type="Button" parent="MainColorRect/Main"]
+[node name="Quit" type="TextureButton" parent="MainColorRect/Main"]
 custom_minimum_size = Vector2(0, 90)
 layout_mode = 2
+texture_normal = ExtResource("4_5d2l8")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="MainColorRect/Main/Quit"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_font_sizes/font_size = 32
 text = "Quit"
 
