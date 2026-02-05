@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://c10ly7icxihtw"]
+[gd_scene load_steps=4 format=3 uid="uid://c10ly7icxihtw"]
 
 [ext_resource type="FontFile" uid="uid://ch8t435m137eh" path="res://fonts/Tomorrow/Tomorrow-Regular.ttf" id="1_xkam6"]
 [ext_resource type="Script" uid="uid://b56gt8twdwi8y" path="res://scripts/label.gd" id="2_g2clt"]
+[ext_resource type="PackedScene" uid="uid://c22nd57fwepa8" path="res://scenes/pause_menu.tscn" id="3_g2clt"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -85,3 +86,6 @@ theme_override_constants/shadow_outline_size = 1
 theme_override_font_sizes/font_size = 48
 text = "Disclaimer: the commands and mechanics of how the terminal works in this game might not be 100% accurate. The hope is though, that it will atleast teach you the fundamental concepts of the terminal."
 autowrap_mode = 3
+
+[node name="PauseMenu" parent="." instance=ExtResource("3_g2clt")]
+layout_mode = 1

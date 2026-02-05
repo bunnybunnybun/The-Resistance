@@ -190,9 +190,9 @@ func _on_LineEdit_gui_input(event):
 		elif command == "":
 			null
 		else:
-			text_edit.text = text_edit.text + "\nbash: " + command + ": command not found"
+			text_edit.text += "\nbash: " + command + ": command not found"
 		
-		text_edit.text = text_edit.text + "\n[" + Global.username + "@" + Global.computername + " " + current_path +"]$ "
+		text_edit.text += "\n[" + Global.username + "@" + Global.computername + " " + current_path +"]$ "
 		var last_line = text_edit.get_line_count() - 1
 		text_edit.set_caret_line(last_line)
 		text_edit.set_caret_column(text_edit.get_line(last_line).length())

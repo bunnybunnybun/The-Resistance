@@ -1,12 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://dgsprvle6pp3a"]
+[gd_scene load_steps=10 format=3 uid="uid://dgsprvle6pp3a"]
 
 [ext_resource type="Script" uid="uid://wcw04fwlw5fs" path="res://scenes/text_edit.gd" id="1_2qdsd"]
 [ext_resource type="FontFile" uid="uid://ch8t435m137eh" path="res://fonts/Tomorrow/Tomorrow-Regular.ttf" id="2_kucbt"]
 [ext_resource type="FontFile" uid="uid://bmw0oo70ggo28" path="res://fonts/Tomorrow/Tomorrow-Bold.ttf" id="3_1m0c6"]
-[ext_resource type="Script" uid="uid://ce3015gobyygf" path="res://scenes/rich_text_label.gd" id="3_sy6ad"]
+[ext_resource type="Script" uid="uid://ce3015gobyygf" path="res://scripts/rich_text_label.gd" id="3_sy6ad"]
 [ext_resource type="FontFile" uid="uid://dlctxxkmstjbr" path="res://fonts/Tomorrow/Tomorrow-BoldItalic.ttf" id="4_x8wt3"]
 [ext_resource type="FontFile" uid="uid://cv1q7pwcvdtd6" path="res://fonts/Tomorrow/Tomorrow-Italic.ttf" id="5_viu5q"]
 [ext_resource type="Texture2D" uid="uid://dmh8b6k4tbaui" path="res://images/LearningTheBasics_background.png" id="7_1m0c6"]
+[ext_resource type="PackedScene" uid="uid://c22nd57fwepa8" path="res://scenes/pause_menu.tscn" id="8_x8wt3"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e3xd5"]
 
@@ -77,7 +78,6 @@ The text that's currently on your screen is called the 'prompt', the first word 
 script = ExtResource("3_sy6ad")
 
 [node name="TextEdit" type="TextEdit" parent="."]
-z_index = 1
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 8
@@ -107,3 +107,7 @@ caret_blink = true
 caret_blink_interval = 1.0
 caret_multiple = false
 script = ExtResource("1_2qdsd")
+
+[node name="PauseMenu" parent="." instance=ExtResource("8_x8wt3")]
+visible = false
+layout_mode = 1
