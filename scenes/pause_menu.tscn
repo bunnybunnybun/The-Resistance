@@ -1,12 +1,18 @@
-[gd_scene load_steps=12 format=3 uid="uid://c22nd57fwepa8"]
+[gd_scene load_steps=18 format=3 uid="uid://c22nd57fwepa8"]
 
 [ext_resource type="Script" uid="uid://dubshxneu4mdb" path="res://scenes/pause_menu.gd" id="1_myx47"]
 [ext_resource type="Shader" uid="uid://cy37b5576pvn5" path="res://scenes/pause_menu.gdshader" id="2_kukqi"]
 [ext_resource type="Texture2D" uid="uid://b14ib3allxbgq" path="res://images/pause_menu.png" id="3_kukqi"]
 [ext_resource type="Texture2D" uid="uid://dcv0qim7mxkuk" path="res://images/pause_menu_button.png" id="4_5d2l8"]
+[ext_resource type="Texture2D" uid="uid://c7v0jor55mike" path="res://images/small_menu_button.png" id="4_knqa7"]
+[ext_resource type="Texture2D" uid="uid://b0jl4ygeal0qr" path="res://images/small_menu_button_click.png" id="5_ofnjo"]
 [ext_resource type="Texture2D" uid="uid://kalb6fyb8sq" path="res://images/pause_menu_button_click.png" id="5_v4r4p"]
+[ext_resource type="Texture2D" uid="uid://d0862eqsqnxpa" path="res://images/small_menu_button_hover.png" id="6_1rgno"]
 [ext_resource type="Texture2D" uid="uid://jkfrtx7yncvs" path="res://images/pause_menu_button_hover.png" id="6_1s2dm"]
 [ext_resource type="Texture2D" uid="uid://ckrh7na86fasd" path="res://images/pause_menu_button_focused.png" id="7_1s2dm"]
+[ext_resource type="Texture2D" uid="uid://dqk55a78mhgr" path="res://images/small_button_focused.png" id="7_4hnlu"]
+[ext_resource type="FontFile" uid="uid://b3gueu447qavs" path="res://fonts/elounda/font/Elounda-Regular.ttf" id="8_1rgno"]
+[ext_resource type="FontFile" uid="uid://cq7xuv6m3nemf" path="res://fonts/elounda/font/Elounda-Regular.otf" id="8_88e76"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5d2l8"]
 shader = ExtResource("2_kukqi")
@@ -206,7 +212,6 @@ texture = ExtResource("3_kukqi")
 stretch_mode = 5
 
 [node name="Settings" type="Control" parent="MainTextureRect"]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -227,10 +232,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -148.75
-offset_top = -180.0
-offset_right = 148.75
-offset_bottom = 180.0
+offset_left = -148.0
+offset_top = -139.0
+offset_right = 148.0
+offset_bottom = 220.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -248,25 +253,43 @@ value = 1.0
 tick_count = 4
 ticks_on_borders = true
 
-[node name="BackButton" type="Button" parent="MainTextureRect/Settings"]
+[node name="BackButton" type="TextureButton" parent="MainTextureRect/Settings"]
 layout_mode = 1
-offset_left = -20.25
-offset_top = -59.0
-offset_right = 85.5
-offset_bottom = -5.0
-theme_override_font_sizes/font_size = 26
+offset_left = -3.25
+offset_top = -46.0
+offset_right = 149.75
+offset_bottom = 20.0
+texture_normal = ExtResource("4_knqa7")
+texture_pressed = ExtResource("5_ofnjo")
+texture_hover = ExtResource("6_1rgno")
+texture_focused = ExtResource("7_4hnlu")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="MainTextureRect/Settings/BackButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("8_1rgno")
+theme_override_font_sizes/font_size = 25
 text = "↩ Back"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Main" type="VBoxContainer" parent="MainTextureRect"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -148.75
+offset_left = -114.875
 offset_top = -180.0
-offset_right = 148.75
+offset_right = 114.875
 offset_bottom = 180.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -295,6 +318,10 @@ offset_right = 20.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("8_88e76")
 theme_override_font_sizes/font_size = 32
 text = "Resume"
 
@@ -320,6 +347,10 @@ offset_right = 20.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("8_88e76")
 theme_override_font_sizes/font_size = 32
 text = "Settings"
 
@@ -345,6 +376,10 @@ offset_right = 20.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("8_88e76")
 theme_override_font_sizes/font_size = 32
 text = "Quit"
 

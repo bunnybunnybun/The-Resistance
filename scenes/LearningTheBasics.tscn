@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://dgsprvle6pp3a"]
+[gd_scene load_steps=11 format=3 uid="uid://dgsprvle6pp3a"]
 
 [ext_resource type="Script" uid="uid://wcw04fwlw5fs" path="res://scenes/text_edit.gd" id="1_2qdsd"]
 [ext_resource type="FontFile" uid="uid://ch8t435m137eh" path="res://fonts/Tomorrow/Tomorrow-Regular.ttf" id="2_kucbt"]
+[ext_resource type="Texture2D" uid="uid://d1vug6araqcxa" path="res://images/LearningTheBasics_dialog_box.png" id="2_viu5q"]
 [ext_resource type="FontFile" uid="uid://bmw0oo70ggo28" path="res://fonts/Tomorrow/Tomorrow-Bold.ttf" id="3_1m0c6"]
 [ext_resource type="Script" uid="uid://ce3015gobyygf" path="res://scripts/rich_text_label.gd" id="3_sy6ad"]
 [ext_resource type="FontFile" uid="uid://dlctxxkmstjbr" path="res://fonts/Tomorrow/Tomorrow-BoldItalic.ttf" id="4_x8wt3"]
@@ -39,29 +40,30 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.13496712, 0.11028875, 0.21170008, 1)
 
-[node name="Label2" type="Label" parent="."]
+[node name="TextureRect2" type="TextureRect" parent="."]
+texture_filter = 1
 layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 33.0
-offset_top = 340.0
-offset_right = 365.0
-offset_bottom = 385.0
-grow_vertical = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
-theme_override_font_sizes/font_size = 32
-text = "Press f1 to continue..."
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 424.0
+offset_bottom = 898.0
+texture = ExtResource("2_viu5q")
+stretch_mode = 5
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="RichTextLabel" type="RichTextLabel" parent="TextureRect2"]
 layout_mode = 1
-offset_left = 33.0
-offset_top = 30.0
-offset_right = 406.0
-offset_bottom = 869.0
-theme_override_colors/default_color = Color(0.77254903, 0.80784315, 0.9882353, 1)
-theme_override_colors/font_shadow_color = Color(0.33333334, 0.12941177, 0.78039217, 0.89411765)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = 40.0
+offset_right = -40.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
 theme_override_fonts/normal_font = ExtResource("2_kucbt")
 theme_override_fonts/bold_font = ExtResource("3_1m0c6")
 theme_override_fonts/bold_italics_font = ExtResource("4_x8wt3")
@@ -76,6 +78,21 @@ text = "Ah, I can see you don't even know where to begin with using this machine
 
 The text that's currently on your screen is called the 'prompt', the first word is your username, the second is the name of your computer. The part right after the computer name shows what directory/folder you are currently in. "
 script = ExtResource("3_sy6ad")
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 33.0
+offset_top = 350.0
+offset_right = 365.0
+offset_bottom = 395.0
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_font_sizes/font_size = 32
+text = "Press f1 to continue..."
 
 [node name="TextEdit" type="TextEdit" parent="."]
 texture_filter = 1

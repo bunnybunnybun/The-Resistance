@@ -1,7 +1,7 @@
 extends RichTextLabel
 
 @onready var label: = $"."
-@onready var label2: = $"../Label2"
+@onready var label2: = $"../../Label2"
 @onready var current_dialog = "1"
 func _ready() -> void:
 	print("Ready!")
