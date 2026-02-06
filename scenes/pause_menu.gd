@@ -1,12 +1,12 @@
 extends Control
 
-@onready var dialogspeedslider: Slider = get_node("MainColorRect/Settings/Settings/DialogSpeedSlider")
+@onready var dialogspeedslider: Slider = get_node("MainTextureRect/Settings/Settings/DialogSpeedSlider")
 
 func _ready():
 	dialogspeedslider.value = Global.dialog_speed_slider_value
 	$AnimationPlayer.play("RESET")
-	$MainColorRect/Main.show()
-	$MainColorRect/Settings.hide()
+	$MainTextureRect/Main.show()
+	$MainTextureRect/Settings.hide()
 
 func resume():
 	get_tree().paused = false
@@ -27,8 +27,8 @@ func _on_resume_pressed() -> void:
 	resume()
 
 func _on_settings_pressed() -> void:
-	$MainColorRect/Main.hide()
-	$MainColorRect/Settings.show()
+	$MainTextureRect/Main.hide()
+	$MainTextureRect/Settings.show()
 	
 func _on_quit_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/MainMenu.tscn")
@@ -39,8 +39,8 @@ func _process(delta):
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if get_tree().paused == false:
 		hide()
-		$MainColorRect/Main.show()
-		$MainColorRect/Settings.hide()
+		$MainTextureRect/Main.show()
+		$MainTextureRect/Settings.hide()
 
 func _on_dialog_speed_slider_value_changed(value: float):
 	if value == 4:
@@ -58,5 +58,5 @@ func _on_dialog_speed_slider_value_changed(value: float):
 
 
 func _on_back_button_pressed() -> void:
-	$MainColorRect/Main.show()
-	$MainColorRect/Settings.hide()
+	$MainTextureRect/Main.show()
+	$MainTextureRect/Settings.hide()
