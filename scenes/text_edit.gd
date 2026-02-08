@@ -145,6 +145,8 @@ func _on_LineEdit_gui_input(event):
 				
 				if path_exists and current is Dictionary:
 					current_path = new_path
+				elif path_exists:
+					text_edit.text += '\ncd: "' + arg + '" is not a directory'
 				else: text_edit.text += '\ncd: The directory "' + arg + '" does not exist'
 				
 		elif command == "touch":

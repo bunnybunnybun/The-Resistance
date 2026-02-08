@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dgsprvle6pp3a"]
+[gd_scene load_steps=14 format=3 uid="uid://dgsprvle6pp3a"]
 
 [ext_resource type="Script" uid="uid://wcw04fwlw5fs" path="res://scenes/text_edit.gd" id="1_2qdsd"]
 [ext_resource type="FontFile" uid="uid://ch8t435m137eh" path="res://fonts/Tomorrow/Tomorrow-Regular.ttf" id="2_kucbt"]
@@ -9,6 +9,33 @@
 [ext_resource type="FontFile" uid="uid://cv1q7pwcvdtd6" path="res://fonts/Tomorrow/Tomorrow-Italic.ttf" id="5_viu5q"]
 [ext_resource type="Texture2D" uid="uid://dmh8b6k4tbaui" path="res://images/LearningTheBasics_background.png" id="7_1m0c6"]
 [ext_resource type="PackedScene" uid="uid://c22nd57fwepa8" path="res://scenes/pause_menu.tscn" id="8_x8wt3"]
+[ext_resource type="Shader" uid="uid://dg7bwch6d16pa" path="res://scenes/CRT.gdshader" id="9_popb1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_popb1"]
+shader = ExtResource("9_popb1")
+shader_parameter/overlay = true
+shader_parameter/scanlines_opacity = 0.4
+shader_parameter/scanlines_width = 0.25
+shader_parameter/grille_opacity = 0.3
+shader_parameter/resolution = Vector2(5000, 5000)
+shader_parameter/pixelate = false
+shader_parameter/roll = false
+shader_parameter/roll_speed = 1.0
+shader_parameter/roll_size = 2.78800013243
+shader_parameter/roll_variation = 0.85200003721012
+shader_parameter/distort_intensity = 0.0
+shader_parameter/noise_opacity = 0.0
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.2450000116375
+shader_parameter/aberration = 4.7499999933364734e-08
+shader_parameter/brightness = 1.4
+shader_parameter/discolor = true
+shader_parameter/warp_amount = 0.0
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.0
+shader_parameter/vignette_opacity = 0.106000005035
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0cwho"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e3xd5"]
 
@@ -20,8 +47,23 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="CRTShader" type="ColorRect" parent="."]
+z_index = 1
+material = SubResource("ShaderMaterial_popb1")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 625.0
+offset_top = 319.0
+offset_right = -625.0
+offset_bottom = -363.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="TextureRect" type="TextureRect" parent="."]
 texture_filter = 1
+material = SubResource("ShaderMaterial_0cwho")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

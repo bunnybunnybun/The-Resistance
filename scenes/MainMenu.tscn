@@ -1,9 +1,34 @@
-[gd_scene load_steps=6 format=3 uid="uid://dvlamqsyyej88"]
+[gd_scene load_steps=8 format=3 uid="uid://dvlamqsyyej88"]
 
 [ext_resource type="Script" uid="uid://c7dfw3c2v8r1v" path="res://scripts/main_menu.gd" id="1_i26rj"]
 [ext_resource type="Texture2D" uid="uid://b7kjcg6ajlfcv" path="res://images/main_menu_background.png" id="2_eiy7p"]
 [ext_resource type="FontFile" uid="uid://brxrvyhwbk85q" path="res://fonts/elounda/font/Elounda-Italic.ttf" id="3_h7a2f"]
 [ext_resource type="PackedScene" uid="uid://c22nd57fwepa8" path="res://scenes/pause_menu.tscn" id="4_ow34m"]
+[ext_resource type="Shader" uid="uid://dg7bwch6d16pa" path="res://scenes/CRT.gdshader" id="5_l72w3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_826wr"]
+shader = ExtResource("5_l72w3")
+shader_parameter/overlay = true
+shader_parameter/scanlines_opacity = 0.4
+shader_parameter/scanlines_width = 0.25
+shader_parameter/grille_opacity = 0.3
+shader_parameter/resolution = Vector2(5000, 5000)
+shader_parameter/pixelate = false
+shader_parameter/roll = false
+shader_parameter/roll_speed = 1.0
+shader_parameter/roll_size = 2.78800013243
+shader_parameter/roll_variation = 0.85200003721012
+shader_parameter/distort_intensity = 0.0
+shader_parameter/noise_opacity = 0.0
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.2450000116375
+shader_parameter/aberration = 4.7499999933364734e-08
+shader_parameter/brightness = 1.4
+shader_parameter/discolor = true
+shader_parameter/warp_amount = 0.0
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.0
+shader_parameter/vignette_opacity = 0.106000005035
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eiy7p"]
 
@@ -15,6 +40,22 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_i26rj")
+
+[node name="CRTShader" type="ColorRect" parent="."]
+z_index = 1
+material = SubResource("ShaderMaterial_826wr")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -332.125
+offset_top = -170.25
+offset_right = 332.125
+offset_bottom = 170.25
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
