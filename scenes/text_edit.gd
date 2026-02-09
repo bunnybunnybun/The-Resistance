@@ -199,15 +199,20 @@ func _on_LineEdit_gui_input(event):
 				current = current[part]
 			
 			if arg:
-				if current[arg] is String:
-					text_edit.text += "\n" + current[arg]
-				elif current[arg] is Dictionary:
-					text_edit.text += "\ncat: " + arg + ": Is a directory"
+				if arg in current:
+					if current[arg] is String:
+						text_edit.text += "\n" + current[arg]
+						if arg == "cool_beans.txt":
+							dialog_node.catted_cool_beans()
+					elif current[arg] is Dictionary:
+						text_edit.text += "\ncat: " + arg + ": Is a directory"
+				else:
+					text_edit.text += "\ncat: " + arg + ": No such file or directory"
 		
 		elif command == "nmcli":
 			if full_command == "nmcli device wifi list":
-				text_edit.text += "\nSSID                        RATE             SIGNAL\nPurpleArmadillo  850 Mbit/s  96\nLazyPlumbers      900 Mbit/s  54\nTacos4Eva             560 Mbit/s  27"
-				dialog_node.task_completed()
+				text_edit.text += "\nSSID                         RATE             SIGNAL\nPurpleArmadillo   850 Mbit/s   96\nLazyPlumbers       900 Mbit/s   54\nTacos4Eva              560 Mbit/s   27"
+				dialog_node.nmcli_task_completed()
 		
 		elif command == "pwd":
 			text_edit.text += "\n" + current_path
