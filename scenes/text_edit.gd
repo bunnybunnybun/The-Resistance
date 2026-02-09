@@ -9,7 +9,7 @@ extends Control
 		"home": {
 			Global.username: {
 				"Documents": {
-					"cool_beans.txt": "Network name: network\nNetwork password: 1234", 
+					"cool_beans.txt": "Network password: vhfxuh", 
 					"placehold.txt": "this is a placeholder"
 					},
 			 	"Downloads": {
@@ -212,7 +212,13 @@ func _on_LineEdit_gui_input(event):
 		elif command == "nmcli":
 			if full_command == "nmcli device wifi list":
 				text_edit.text += "\nSSID                         RATE             SIGNAL\nPurpleArmadillo   850 Mbit/s   96\nLazyPlumbers       900 Mbit/s   54\nTacos4Eva              560 Mbit/s   27"
-				dialog_node.nmcli_task_completed()
+				dialog_node.nmcli_list_completed()
+			elif full_command.begins_with("nmcli device wifi connect"):
+				if full_command == "nmcli device wifi connect PurpleArmadillo password secure" or 'nmcli device wifi connect "PurpleArmadillo" password "secure"':
+					dialog_node.nmcli_connect_completed()
+					text_edit.text += "\nConnection succesfull."
+				else:
+					text_edit.text += "\nConnection unsuccesfull. Incorrect SSID or password."
 		
 		elif command == "pwd":
 			text_edit.text += "\n" + current_path
