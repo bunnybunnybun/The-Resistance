@@ -21,7 +21,7 @@ extends Control
 			}
 		}
 	}
-@onready var current_path = "/home/user"
+@onready var current_path = "/home/" + Global.username
 @onready var dialog_node = $"../TextureRect2/RichTextLabel"
 
 func _ready():

@@ -153,7 +153,6 @@ theme_override_colors/font_outline_color = Color(0.23449251, 0.5420099, 1.92523e
 theme_override_colors/background_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_e3xd5")
-text = "[user@computer /home/user]$ "
 context_menu_enabled = false
 emoji_menu_enabled = false
 wrap_mode = 1
