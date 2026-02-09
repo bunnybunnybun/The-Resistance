@@ -9,7 +9,7 @@ extends Control
 		"home": {
 			Global.username: {
 				"Documents": {
-					"Secrets.txt": "HAHA you thought you could discover my deepest secrets?", 
+					"cool_beans.txt": "Network name: network\nNetwork password: 1234", 
 					"placehold.txt": "this is a placeholder"
 					},
 			 	"Downloads": {
@@ -22,6 +22,7 @@ extends Control
 		}
 	}
 @onready var current_path = "/home/user"
+@onready var dialog_node = $"../TextureRect2/RichTextLabel"
 
 func _ready():
 	text_edit.text = "[" + Global.username + "@" + Global.computername + " " + current_path +"]$ "
@@ -202,6 +203,12 @@ func _on_LineEdit_gui_input(event):
 					text_edit.text += "\n" + current[arg]
 				elif current[arg] is Dictionary:
 					text_edit.text += "\ncat: " + arg + ": Is a directory"
+		
+		elif command == "nmcli":
+			if full_command == "nmcli device wifi list":
+				text_edit.text += "\nSSID                        RATE             SIGNAL\nPurpleArmadillo  850 Mbit/s  96\nLazyPlumbers      900 Mbit/s  54\nTacos4Eva             560 Mbit/s  27"
+				dialog_node.task_completed()
+		
 		elif command == "pwd":
 			text_edit.text += "\n" + current_path
 		elif command == "clear":
