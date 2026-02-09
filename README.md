@@ -7,5 +7,6 @@ __Disclaimer:__ The goal of this is to teach you how the terminal works in a fun
 Also note that this game is nowhere near finished :P
 
 Credits:
-	SB Elounda Font by Silverblue_type.
-	Tomorrow font by Tony de Marco and Monica Rizzolli
+ - SB Elounda Font by Silverblue_type.
+ - Tomorrow font by Tony de Marco and Monica Rizzolli.
+ - CRT shader effect by [A7meD](https://godotshaders.com/author/a7med/)

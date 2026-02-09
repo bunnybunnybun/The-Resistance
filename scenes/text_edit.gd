@@ -182,6 +182,26 @@ func _on_LineEdit_gui_input(event):
 			
 			if arg:
 				current.erase(arg)
+				
+		elif command == "cat":
+			var current = directories["/"]
+			var path_parts = []
+			
+			for part in current_path.split("/"):
+				if !part.is_empty():
+					path_parts.append(part)
+			
+			for part in path_parts:
+				if not current.has(part):
+					text_edit.text += "No such file or directory"
+					return
+				current = current[part]
+			
+			if arg:
+				if current[arg] is String:
+					text_edit.text += "\n" + current[arg]
+				elif current[arg] is Dictionary:
+					text_edit.text += "\ncat: " + arg + ": Is a directory"
 		elif command == "pwd":
 			text_edit.text += "\n" + current_path
 		elif command == "clear":
