@@ -23,10 +23,16 @@ extends Control
 	}
 @onready var current_path = "/home/" + Global.username
 @onready var dialog_node = $"../TextureRect2/RichTextLabel"
+@onready var connected_to_wifi = false
+@onready var command_is_running = false
 
 func _ready():
 	text_edit.text = "[" + Global.username + "@" + Global.computername + " " + current_path +"]$ "
 	text_edit.gui_input.connect(_on_LineEdit_gui_input)
+	
+func _input(event):
+	if event.is_action_pressed("ctrl+c"):
+		command_is_running = false
 	
 func _on_LineEdit_gui_input(event):
 	if event is InputEventKey and event.pressed and event.keycode == KEY_ENTER:
@@ -214,11 +220,34 @@ func _on_LineEdit_gui_input(event):
 				text_edit.text += "\nSSID                         RATE             SIGNAL\nPurpleArmadillo   850 Mbit/s   96\nLazyPlumbers       900 Mbit/s   54\nTacos4Eva              560 Mbit/s   27"
 				dialog_node.nmcli_list_completed()
 			elif full_command.begins_with("nmcli device wifi connect"):
-				if full_command == "nmcli device wifi connect PurpleArmadillo password secure" or 'nmcli device wifi connect "PurpleArmadillo" password "secure"':
+				if full_command == "nmcli device wifi connect PurpleArmadillo password secure":
 					dialog_node.nmcli_connect_completed()
 					text_edit.text += "\nConnection succesfull."
+					connected_to_wifi = true
 				else:
 					text_edit.text += "\nConnection unsuccesfull. Incorrect SSID or password."
+		
+		elif command == "ping":
+			if arg:
+				if connected_to_wifi == true:
+					if arg.ends_with(".com") or arg.ends_with(".net") or arg.ends_with(".org") or arg.ends_with(".io"):
+						command_is_running = true
+						while true:
+							if command_is_running == false:
+								text_edit.text += "\n^c"
+								break
+							text_edit.text += "\nsuccess"
+							var last_line = text_edit.get_line_count() - 1
+							text_edit.set_caret_line(last_line)
+							text_edit.set_caret_column(text_edit.get_line(last_line).length())
+							await get_tree().create_timer(1.0).timeout
+							
+					else:
+						text_edit.text += "\nping: " + arg + ": Name or service not known"
+				else:
+					text_edit.text += "\nping: " + arg + ": Temporary failure in name resolution (make sure you are connected to the internet)."
+			else:
+				text_edit.text += "\nping: usage error: Destination address required"
 		
 		elif command == "pwd":
 			text_edit.text += "\n" + current_path
