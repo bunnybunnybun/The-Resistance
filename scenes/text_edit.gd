@@ -234,9 +234,10 @@ func _on_LineEdit_gui_input(event):
 						command_is_running = true
 						while true:
 							if command_is_running == false:
-								text_edit.text += "\n^c"
+								text_edit.text += "\n^C"
 								break
-							text_edit.text += "\nsuccess"
+							var ms = randf_range(45.0, 65.0)
+							text_edit.text += "\nPing succsesful, time=%.1f" % ms + " ms"
 							var last_line = text_edit.get_line_count() - 1
 							text_edit.set_caret_line(last_line)
 							text_edit.set_caret_column(text_edit.get_line(last_line).length())
