@@ -87,7 +87,7 @@ func _on_LineEdit_gui_input(event):
 			var new_path = current_path
 			if !new_path.ends_with("/"):
 				new_path += "/"
-				
+			
 			if arg == ".":
 				null
 			elif arg.begins_with("..") and current_path != "/":
@@ -257,6 +257,16 @@ func _on_LineEdit_gui_input(event):
 			var last_line = text_edit.get_line_count() - 1
 			text_edit.set_caret_column(text_edit.get_line(last_line).length())
 			return
+		
+		elif command == "tldr":
+			if arg == "ls":
+				text_edit.text += "\nPrint the contents of a file:\n	cat <path to file>"
+			elif arg == "cd":
+				text_edit.text += "\nGo to the specified directory:\n	cd <path/to/directory>\n\nGo up to the parent of the home directory:\n	cd ..\n\nGo to the root directory:\n	cd /"
+			elif arg == "touch":
+				text_edit.text += "\nCreate a new file:\n	touch <name_of_file>"
+			elif arg == "rm":
+				text_edit.text += "\nRemove a file or directory:\n	rm <name of file/directory>"
 		elif command == "":
 			null
 		else:
