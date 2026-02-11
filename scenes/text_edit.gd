@@ -226,7 +226,14 @@ func _on_LineEdit_gui_input(event):
 					connected_to_wifi = true
 				else:
 					text_edit.text += "\nConnection unsuccesfull. Incorrect SSID or password."
-		
+			elif full_command == "nmcli device wifi show-password":
+				if connected_to_wifi == true:
+					text_edit.text += "\nSSID: PurpleArmadillo\nPassword: secure"
+				else:
+					text_edit.text += "\nerror: You are not connected to a network."
+			elif full_command == "nmcli connection down PurpleArmadillo":
+				text_edit.text += "\nDisconnected"
+				connected_to_wifi = false
 		elif command == "ping":
 			if arg:
 				if connected_to_wifi == true:
@@ -267,6 +274,11 @@ func _on_LineEdit_gui_input(event):
 				text_edit.text += "\nCreate a new file:\n	touch <name_of_file>"
 			elif arg == "rm":
 				text_edit.text += "\nRemove a file or directory:\n	rm <name of file/directory>"
+			elif arg == "cat":
+				text_edit.text += "\nPrint the contents of a file:\n	cat <file_name>"
+			elif arg == "nmcli":
+				text_edit.text += "\nList available networks:\n	nmcli device wifi list\nConnect to a network:\n	nmcli device wifi connect <network_SSID> password <network_password>\nShow password of currently connected network:\n	nmcli device wifi show-password\n Deactivate a connection:\n	nmcli connection down <SSID>"
+			
 		elif command == "":
 			null
 		else:
