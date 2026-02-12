@@ -21,10 +21,19 @@ extends Control
 			}
 		}
 	}
+@onready var tldr_pages = {
+	"ls": "\nList the contents of the current directory:\n	ls",
+	"cd": "\nGo to the specified directory:\n	cd <path/to/directory>\n\nGo up to the parent of the home directory:\n	cd ..\n\nGo to the root directory:\n	cd /",
+	"touch": "\nCreate a new file:\n	touch <name_of_file>",
+	"rm": "\nRemove a file or directory:\n	rm <name of file/directory>",
+	"cat": "\nThis command has nothing to do with kitties, sorry :3\nPrint the contents of a file:\n	cat <file_name>",
+	"nmcli": "\nList available networks:\n	nmcli device wifi list\nConnect to a network:\n	nmcli device wifi connect <network_SSID> password <network_password>\nShow password of currently connected network:\n	nmcli device wifi show-password\n Deactivate a connection:\n	nmcli connection down <SSID>",
+}
 @onready var current_path = "/home/" + Global.username
 @onready var dialog_node = $"../TextureRect2/RichTextLabel"
 @onready var connected_to_wifi = false
 @onready var command_is_running = false
+@onready var tldr_is_installed = false
 
 func _ready():
 	text_edit.text = "[" + Global.username + "@" + Global.computername + " " + current_path +"]$ "
@@ -265,19 +274,20 @@ func _on_LineEdit_gui_input(event):
 			text_edit.set_caret_column(text_edit.get_line(last_line).length())
 			return
 		
-		elif command == "tldr":
-			if arg == "ls":
-				text_edit.text += "\nPrint the contents of a file:\n	cat <path to file>"
-			elif arg == "cd":
-				text_edit.text += "\nGo to the specified directory:\n	cd <path/to/directory>\n\nGo up to the parent of the home directory:\n	cd ..\n\nGo to the root directory:\n	cd /"
-			elif arg == "touch":
-				text_edit.text += "\nCreate a new file:\n	touch <name_of_file>"
-			elif arg == "rm":
-				text_edit.text += "\nRemove a file or directory:\n	rm <name of file/directory>"
-			elif arg == "cat":
-				text_edit.text += "\nPrint the contents of a file:\n	cat <file_name>"
-			elif arg == "nmcli":
-				text_edit.text += "\nList available networks:\n	nmcli device wifi list\nConnect to a network:\n	nmcli device wifi connect <network_SSID> password <network_password>\nShow password of currently connected network:\n	nmcli device wifi show-password\n Deactivate a connection:\n	nmcli connection down <SSID>"
+		elif command == "apt":
+			if full_command == "apt install tldr":
+				if connected_to_wifi == true:
+					if tldr_is_installed == false:
+						text_edit.text += "\nSuccesfully installed 'tldr'."
+						tldr_is_installed = true
+					else:
+						text_edit.text += "\n'tldr' already installed."
+				else:
+					text_edit.text += "\nError: Unable to install package: No network connection."
+		
+		elif command == "tldr" and tldr_is_installed == true:
+			if arg in tldr_pages:
+				text_edit.text += tldr_pages[arg]
 			
 		elif command == "":
 			null
