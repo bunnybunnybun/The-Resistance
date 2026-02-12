@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://c10ly7icxihtw"]
+[gd_scene load_steps=5 format=3 uid="uid://c10ly7icxihtw"]
 
+[ext_resource type="Texture2D" uid="uid://dhuwu63buvsdt" path="res://images/intro_dialog_box.png" id="1_30aji"]
 [ext_resource type="FontFile" uid="uid://ch8t435m137eh" path="res://fonts/Tomorrow/Tomorrow-Regular.ttf" id="1_xkam6"]
 [ext_resource type="Script" uid="uid://b56gt8twdwi8y" path="res://scripts/label.gd" id="2_g2clt"]
 [ext_resource type="PackedScene" uid="uid://c22nd57fwepa8" path="res://scenes/pause_menu.tscn" id="3_g2clt"]
@@ -21,6 +22,23 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -492.25
+offset_top = -492.25
+offset_right = 492.25
+offset_bottom = 492.25
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_30aji")
+
 [node name="Label" type="Label" parent="."]
 visible = false
 layout_mode = 1
@@ -29,14 +47,15 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -473.7174
-offset_top = -360.21875
-offset_right = 473.7174
-offset_bottom = 360.21875
+offset_left = -446.0
+offset_top = -443.5
+offset_right = 444.0
+offset_bottom = 446.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0.7711869, 0.8070242, 0.9878445, 1)
-theme_override_colors/font_shadow_color = Color(0.33258724, 0.1284658, 0.7799957, 0.89411765)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
 theme_override_fonts/font = ExtResource("1_xkam6")
 theme_override_font_sizes/font_size = 46
 text = "It's 2042. The government has become an authoritarian regime. They have cameras, trackers in all electronical devices, and they know where you are and what you are doing at all times, just like the books of ol' warned us of.
@@ -54,16 +73,16 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -568.0
-offset_top = -130.0
-offset_right = -108.0
-offset_bottom = -54.0
+offset_left = -995.0
+offset_top = -171.0
+offset_right = -517.0
+offset_bottom = -95.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
 theme_override_font_sizes/font_size = 46
-text = "Press f1 to continue..."
+text = "Press f2 to continue..."
 
 [node name="Label3" type="Label" parent="."]
 layout_mode = 1
@@ -88,4 +107,5 @@ text = "Disclaimer: the commands and mechanics of how the terminal works in this
 autowrap_mode = 3
 
 [node name="PauseMenu" parent="." instance=ExtResource("3_g2clt")]
+visible = false
 layout_mode = 1

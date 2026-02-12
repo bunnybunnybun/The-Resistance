@@ -4,10 +4,14 @@ extends Label
 @onready var label2: = $"../Label2"
 @onready var disclaimer = $"../Label3"
 @onready var current_dialog = "1"
+@onready var background_thing = $"../TextureRect"
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	background_thing.visible = false
+	disclaimer.visible = true
 	await get_tree().create_timer(6.0).timeout
 	disclaimer.visible = false
+	background_thing.visible = true
 	label.visible = true
 	print("Ready!")
 	var tween_speed: float = text.length()*Global.dialog_speed
@@ -26,7 +30,7 @@ func on_tween_finish():
 	label2.visible = true
 	
 func _input(event):
-	if Input.is_action_just_pressed("continue_in_dialog") and label2.visible == true:
+	if Input.is_action_just_pressed("forward_in_dialog") and label2.visible == true:
 		print("Space pressed. Current dialog is " + current_dialog)
 		label.visible_ratio = 0.0
 		label2.visible = false

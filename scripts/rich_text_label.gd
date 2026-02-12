@@ -15,6 +15,7 @@ extends RichTextLabel
 }
 func _ready() -> void:
 	label.text = dialogs[current_dialog]
+	label2.text = "Press f2 to continue,\nor f1 to go back..."
 	label2.visible = false
 	var tween_speed: float = text.length()*Global.dialog_speed
 	visible_ratio = 0.0
@@ -30,13 +31,13 @@ func _process(delta: float) -> void:
 
 func on_tween_finish():
 	if current_dialog == 4:
-		label2.text = "Complete the task to continue..."
+		label2.text = "Complete the task to continue, or press f1 to go back..."
 	if current_dialog == 7:
-		label2.text = "Press f1 to continue..."
+		label2.text = "Press f2 to continue,\nor f1 to go back..."
 	label2.visible = true
 	
 func _input(event):
-	if Input.is_action_just_pressed("continue_in_dialog") and label2.visible == true and label2.text == "Press f1 to continue...":
+	if Input.is_action_just_pressed("forward_in_dialog") and label2.visible == true and label2.text == "Press f2 to continue,\nor f1 to go back...":
 		label.accept_event()
 		label.visible_ratio = 0.0
 		label2.visible = false
@@ -49,7 +50,27 @@ func _input(event):
 			tween.tween_property(label, "visible_ratio", 1.0, tween_speed)
 			tween.finished.connect(on_tween_finish)
 		else:
-			print("Oh no you've reached the end of the dialog!!")
+			label.text = "[b][color=red]Hmmm, it appears that the game is not finished, and you have reached the end of the dialog that has been created so far... More coming soon, maybe?[/color][/b]"
+			var tween_speed: float = text.length()*Global.dialog_speed
+			var tween = create_tween()
+			tween.set_trans(Tween.TRANS_LINEAR)
+			tween.tween_property(label, "visible_ratio", 1.0, tween_speed)
+			tween.finished.connect(on_tween_finish)
+		
+	if Input.is_action_just_pressed("backward_in_dialog") and label2.visible == true:
+		label.accept_event()
+		label.visible_ratio = 0.0
+		label2.visible = false
+		current_dialog -= 1
+		if dialogs.has(current_dialog):
+			label.text = dialogs[current_dialog]
+			var tween_speed: float = text.length()*Global.dialog_speed
+			var tween = create_tween()
+			tween.set_trans(Tween.TRANS_LINEAR)
+			tween.tween_property(label, "visible_ratio", 1.0, tween_speed)
+			tween.finished.connect(on_tween_finish)
+		else:
+			get_tree().change_scene_to_file("res://scenes/IntroDialog.tscn")
 func nmcli_list_completed():
 	if current_dialog == 4 and label2.visible == true:
 		label.accept_event()
