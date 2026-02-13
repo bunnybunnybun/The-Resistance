@@ -24,10 +24,11 @@ extends Control
 @onready var tldr_pages = {
 	"ls": "\nList the contents of the current directory:\n	ls",
 	"cd": "\nGo to the specified directory:\n	cd <path/to/directory>\n\nGo up to the parent of the home directory:\n	cd ..\n\nGo to the root directory:\n	cd /",
-	"touch": "\nCreate a new file:\n	touch <name_of_file>",
+	"touch": "\nCreate a new file:\n	touch <file_name>",
 	"rm": "\nRemove a file or directory:\n	rm <name of file/directory>",
 	"cat": "\nThis command has nothing to do with kitties, sorry :3\nPrint the contents of a file:\n	cat <file_name>",
 	"nmcli": "\nList available networks:\n	nmcli device wifi list\nConnect to a network:\n	nmcli device wifi connect <network_SSID> password <network_password>\nShow password of currently connected network:\n	nmcli device wifi show-password\n Deactivate a connection:\n	nmcli connection down <SSID>",
+	"nano": "\nEdit a file:\n	nano <file_name>",
 }
 @onready var current_path = "/home/" + Global.username
 @onready var dialog_node = $"../TextureRect2/RichTextLabel"
