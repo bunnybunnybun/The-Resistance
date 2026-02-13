@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dgsprvle6pp3a"]
+[gd_scene load_steps=22 format=3 uid="uid://dgsprvle6pp3a"]
 
 [ext_resource type="Script" uid="uid://wcw04fwlw5fs" path="res://scripts/text_edit.gd" id="1_2qdsd"]
 [ext_resource type="FontFile" uid="uid://ch8t435m137eh" path="res://fonts/Tomorrow/Tomorrow-Regular.ttf" id="2_kucbt"]
@@ -11,6 +11,13 @@
 [ext_resource type="PackedScene" uid="uid://c22nd57fwepa8" path="res://scenes/pause_menu.tscn" id="8_x8wt3"]
 [ext_resource type="Shader" uid="uid://dg7bwch6d16pa" path="res://shaders/CRT.gdshader" id="9_popb1"]
 [ext_resource type="Script" uid="uid://yhhmhv0swh1n" path="res://scripts/nano.gd" id="10_0cwho"]
+[ext_resource type="Texture2D" uid="uid://dcv0qim7mxkuk" path="res://images/pause_menu_button.png" id="12_6gixm"]
+[ext_resource type="Texture2D" uid="uid://kalb6fyb8sq" path="res://images/pause_menu_button_click.png" id="13_1s73h"]
+[ext_resource type="Texture2D" uid="uid://jkfrtx7yncvs" path="res://images/pause_menu_button_hover.png" id="14_5v3h6"]
+[ext_resource type="Texture2D" uid="uid://ckrh7na86fasd" path="res://images/pause_menu_button_focused.png" id="15_ad878"]
+[ext_resource type="FontFile" uid="uid://b3gueu447qavs" path="res://fonts/elounda/font/Elounda-Regular.ttf" id="16_1s73h"]
+[ext_resource type="Script" uid="uid://boi72mdv2d5ey" path="res://scenes/show_answer.gd" id="16_ad878"]
+[ext_resource type="Texture2D" uid="uid://b14ib3allxbgq" path="res://images/pause_menu.png" id="17_5v3h6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_popb1"]
 shader = ExtResource("9_popb1")
@@ -127,10 +134,10 @@ anchor_bottom = 0.5
 offset_left = 33.0
 offset_top = 354.0
 offset_right = 399.0
-offset_bottom = 447.0
+offset_bottom = 492.0
 grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
-theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/normal_font_size = 28
 bbcode_enabled = true
 
 [node name="Terminal" type="TextEdit" parent="."]
@@ -164,6 +171,7 @@ caret_multiple = false
 script = ExtResource("1_2qdsd")
 
 [node name="file_editor_terminal" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -275,4 +283,74 @@ text = "Succesfully saved to file"
 visible = false
 layout_mode = 1
 
+[node name="show_answer" type="TextureButton" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -278.0
+offset_top = 15.0
+offset_right = -15.0
+offset_bottom = 123.0
+grow_horizontal = 0
+texture_normal = ExtResource("12_6gixm")
+texture_pressed = ExtResource("13_1s73h")
+texture_hover = ExtResource("14_5v3h6")
+texture_focused = ExtResource("15_ad878")
+stretch_mode = 5
+script = ExtResource("16_ad878")
+
+[node name="Label" type="Label" parent="show_answer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("16_1s73h")
+theme_override_font_sizes/font_size = 26
+text = "Stuck?
+Show answer"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="answer_box" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1560.0
+offset_top = 143.0
+offset_right = -17.0
+offset_bottom = -474.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("17_5v3h6")
+stretch_mode = 5
+
+[node name="Label" type="RichTextLabel" parent="answer_box"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 34.0
+offset_top = 33.0
+offset_right = -34.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/normal_font = ExtResource("2_kucbt")
+theme_override_font_sizes/normal_font_size = 33
+text = "The password is \"secure\", so the full command to connect to wifi would be: nmcli device wifi connect PurpleArmadillo password secure"
+selection_enabled = true
+
 [connection signal="gui_input" from="file_editor_terminal/text_box" to="file_editor_terminal/text_box" method="_on_gui_input"]
+[connection signal="pressed" from="show_answer" to="show_answer" method="_on_pressed"]

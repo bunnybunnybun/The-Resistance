@@ -32,12 +32,16 @@ func _process(delta: float) -> void:
 func on_tween_finish():
 	if current_dialog == 4:
 		label2.text = "Complete the task to continue, or press f1 to go back..."
-	if current_dialog == 7:
+	elif current_dialog == 6:
+		$"../../show_answer".visible = true
+	elif current_dialog == 7:
 		label2.text = "Press f2 to continue,\nor f1 to go back..."
 	label2.visible = true
 	
 func _input(event):
 	if Input.is_action_just_pressed("forward_in_dialog") and label2.visible == true and label2.text == "Press f2 to continue,\nor f1 to go back...":
+		$"../../show_answer".visible = false
+		$"../../answer_box".visible = false
 		label.accept_event()
 		label.visible_ratio = 0.0
 		label2.visible = false
@@ -58,6 +62,8 @@ func _input(event):
 			tween.finished.connect(on_tween_finish)
 		
 	if Input.is_action_just_pressed("backward_in_dialog") and label2.visible == true:
+		$"../../show_answer".visible = false
+		$"../../answer_box".visible = false
 		label.accept_event()
 		label.visible_ratio = 0.0
 		label2.visible = false
@@ -106,6 +112,8 @@ func catted_cool_beans():
 func nmcli_connect_completed():
 	if current_dialog == 6 and label2.visible == true:
 		label.accept_event()
+		$"../../show_answer".visible = false
+		$"../../answer_box".visible = false
 		label.visible_ratio = 0.0
 		label2.visible = false
 		current_dialog += 1
