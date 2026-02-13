@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://dgsprvle6pp3a"]
 
-[ext_resource type="Script" uid="uid://wcw04fwlw5fs" path="res://scenes/text_edit.gd" id="1_2qdsd"]
+[ext_resource type="Script" uid="uid://wcw04fwlw5fs" path="res://scripts/text_edit.gd" id="1_2qdsd"]
 [ext_resource type="FontFile" uid="uid://ch8t435m137eh" path="res://fonts/Tomorrow/Tomorrow-Regular.ttf" id="2_kucbt"]
 [ext_resource type="Texture2D" uid="uid://d1vug6araqcxa" path="res://images/LearningTheBasics_dialog_box.png" id="2_viu5q"]
 [ext_resource type="FontFile" uid="uid://bmw0oo70ggo28" path="res://fonts/Tomorrow/Tomorrow-Bold.ttf" id="3_1m0c6"]
@@ -9,8 +9,8 @@
 [ext_resource type="FontFile" uid="uid://cv1q7pwcvdtd6" path="res://fonts/Tomorrow/Tomorrow-Italic.ttf" id="5_viu5q"]
 [ext_resource type="Texture2D" uid="uid://dmh8b6k4tbaui" path="res://images/LearningTheBasics_background.png" id="7_1m0c6"]
 [ext_resource type="PackedScene" uid="uid://c22nd57fwepa8" path="res://scenes/pause_menu.tscn" id="8_x8wt3"]
-[ext_resource type="Shader" uid="uid://dg7bwch6d16pa" path="res://scenes/CRT.gdshader" id="9_popb1"]
-[ext_resource type="Script" uid="uid://yhhmhv0swh1n" path="res://scenes/nano.gd" id="10_0cwho"]
+[ext_resource type="Shader" uid="uid://dg7bwch6d16pa" path="res://shaders/CRT.gdshader" id="9_popb1"]
+[ext_resource type="Script" uid="uid://yhhmhv0swh1n" path="res://scripts/nano.gd" id="10_0cwho"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_popb1"]
 shader = ExtResource("9_popb1")
@@ -248,6 +248,28 @@ theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 18
 bbcode_enabled = true
 text = "  not GNU nano 8.7"
+
+[node name="ColorRect" type="ColorRect" parent="file_editor_terminal"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 327.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="text" type="RichTextLabel" parent="file_editor_terminal/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "Succesfully saved to file"
 
 [node name="PauseMenu" parent="." instance=ExtResource("8_x8wt3")]
 visible = false

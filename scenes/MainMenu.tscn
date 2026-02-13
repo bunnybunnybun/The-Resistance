@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b7kjcg6ajlfcv" path="res://images/main_menu_background.png" id="2_eiy7p"]
 [ext_resource type="FontFile" uid="uid://brxrvyhwbk85q" path="res://fonts/elounda/font/Elounda-Italic.ttf" id="3_h7a2f"]
 [ext_resource type="PackedScene" uid="uid://c22nd57fwepa8" path="res://scenes/pause_menu.tscn" id="4_ow34m"]
-[ext_resource type="Shader" uid="uid://dg7bwch6d16pa" path="res://scenes/CRT.gdshader" id="5_l72w3"]
+[ext_resource type="Shader" uid="uid://dg7bwch6d16pa" path="res://shaders/CRT.gdshader" id="5_l72w3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_826wr"]
 shader = ExtResource("5_l72w3")

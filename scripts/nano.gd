@@ -3,7 +3,8 @@ extends TextEdit
 @onready var text_box = $"."
 @onready var text_edit = $"../../Terminal"
 @onready var file_editor = $"../"
-
+func _ready():
+	$"../ColorRect".visible = false
 
 func _input(event: InputEvent):
 	if event.is_action_pressed("nano_exit"):
@@ -27,3 +28,7 @@ func _input(event: InputEvent):
 		
 		if text_edit.arg:
 			current[text_edit.arg] = text_box.text
+			$"../ColorRect/text".text = "Succesfully saved to file " + text_edit.arg + "."
+			$"../ColorRect".visible = true
+			await get_tree().create_timer(3.0).timeout
+			$"../ColorRect".visible = false
