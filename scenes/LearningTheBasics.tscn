@@ -132,7 +132,7 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
 theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 
-[node name="TextEdit" type="TextEdit" parent="."]
+[node name="Terminal" type="TextEdit" parent="."]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 8
@@ -161,6 +161,79 @@ caret_blink = true
 caret_blink_interval = 1.0
 caret_multiple = false
 script = ExtResource("1_2qdsd")
+
+[node name="file_editor_terminal" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -335.0
+offset_top = -221.0
+offset_right = 335.0
+offset_bottom = 177.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="text_box" type="TextEdit" parent="file_editor_terminal"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 32.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/caret_color = Color(0.3372549, 0.78039217, 0.3137255, 1)
+theme_override_colors/font_color = Color(0.33665636, 0.78083885, 0.3151847, 1)
+theme_override_colors/font_outline_color = Color(0.23449251, 0.5420099, 1.92523e-07, 1)
+theme_override_colors/background_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_e3xd5")
+context_menu_enabled = false
+emoji_menu_enabled = false
+wrap_mode = 1
+scroll_smooth = true
+caret_type = 1
+caret_blink = true
+caret_blink_interval = 1.0
+caret_multiple = false
+
+[node name="ColorRect2" type="ColorRect" parent="file_editor_terminal"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 28.0
+grow_horizontal = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="file_editor_terminal"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -36.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 22
+bbcode_enabled = true
+text = "[bgcolor=white]ctrl + X[/bgcolor] [color=white] exit[/color]	    [bgcolor=white]ctrl + O[/bgcolor] [color=white] save[/color]"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="file_editor_terminal"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 26.0
+grow_horizontal = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "  not GNU nano 8.7"
 
 [node name="PauseMenu" parent="." instance=ExtResource("8_x8wt3")]
 visible = false

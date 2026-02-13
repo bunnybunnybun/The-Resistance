@@ -34,10 +34,14 @@ extends Control
 @onready var connected_to_wifi = false
 @onready var command_is_running = false
 @onready var tldr_is_installed = false
+@onready var file_editor = $"../file_editor_terminal"
+@onready var file_editor_text_box = $"../file_editor_terminal/text_box"
 
 func _ready():
 	text_edit.text = "[" + Global.username + "@" + Global.computername + " " + current_path +"]$ "
 	text_edit.gui_input.connect(_on_LineEdit_gui_input)
+	file_editor.visible = false
+	text_edit.visible = true
 	
 func _input(event):
 	if event.is_action_pressed("ctrl+c"):
@@ -288,7 +292,38 @@ func _on_LineEdit_gui_input(event):
 		elif command == "tldr" and tldr_is_installed == true:
 			if arg in tldr_pages:
 				text_edit.text += tldr_pages[arg]
+		
+		elif command == "nano":
+			var current = directories["/"]
+			var path_parts = []
 			
+			for part in current_path.split("/"):
+				if !part.is_empty():
+					path_parts.append(part)
+			
+			for part in path_parts:
+				if not current.has(part):
+					text_edit.text += "\nNo such file or directory"
+					text_edit.text = text_edit.text + "\n[user@computer ~]$ "
+					var last_line = text_edit.get_line_count() - 1
+					text_edit.set_caret_line(last_line)
+					text_edit.set_caret_column(text_edit.get_line(last_line).length())
+					return
+				current = current[part]
+			
+			if arg in current:
+				var file_to_be_edited = current[arg]
+				if file_to_be_edited is not Dictionary:
+					text_edit.visible = false
+					file_editor.visible = true
+					file_editor_text_box.text = file_to_be_edited
+				elif file_to_be_edited is Dictionary:
+					text_edit.text += "\nerror: \"" + arg + "\" is a directory"
+				else:
+					text_edit.text += "\nWHAT HAVE YOU DONE?!?!?"
+			else:
+				text_edit.text += "\nerror: No such file \"" + arg + "\""
+		
 		elif command == "":
 			null
 		else:
