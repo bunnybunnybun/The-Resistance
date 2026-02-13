@@ -118,3 +118,7 @@ func nmcli_connect_completed():
 			tween.finished.connect(on_tween_finish)
 		else:
 			print("Oh no you've reached the end of the dialog!!")
+
+
+func _on_text_box_gui_input(event: InputEvent) -> void:
+	pass # Replace with function body.

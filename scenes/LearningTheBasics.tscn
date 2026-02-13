@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dgsprvle6pp3a"]
+[gd_scene load_steps=15 format=3 uid="uid://dgsprvle6pp3a"]
 
 [ext_resource type="Script" uid="uid://wcw04fwlw5fs" path="res://scenes/text_edit.gd" id="1_2qdsd"]
 [ext_resource type="FontFile" uid="uid://ch8t435m137eh" path="res://fonts/Tomorrow/Tomorrow-Regular.ttf" id="2_kucbt"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dmh8b6k4tbaui" path="res://images/LearningTheBasics_background.png" id="7_1m0c6"]
 [ext_resource type="PackedScene" uid="uid://c22nd57fwepa8" path="res://scenes/pause_menu.tscn" id="8_x8wt3"]
 [ext_resource type="Shader" uid="uid://dg7bwch6d16pa" path="res://scenes/CRT.gdshader" id="9_popb1"]
+[ext_resource type="Script" uid="uid://yhhmhv0swh1n" path="res://scenes/nano.gd" id="10_0cwho"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_popb1"]
 shader = ExtResource("9_popb1")
@@ -202,6 +203,7 @@ caret_type = 1
 caret_blink = true
 caret_blink_interval = 1.0
 caret_multiple = false
+script = ExtResource("10_0cwho")
 
 [node name="ColorRect2" type="ColorRect" parent="file_editor_terminal"]
 layout_mode = 1
@@ -210,7 +212,7 @@ anchor_right = 1.0
 offset_bottom = 28.0
 grow_horizontal = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="file_editor_terminal"]
+[node name="bottom_text" type="RichTextLabel" parent="file_editor_terminal"]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -220,11 +222,11 @@ offset_top = -36.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/normal_font_size = 22
+theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
-text = "[bgcolor=white]ctrl + X[/bgcolor] [color=white] exit[/color]	    [bgcolor=white]ctrl + O[/bgcolor] [color=white] save[/color]"
+text = "[bgcolor=white]ctrl + X[/bgcolor] [color=white] exit[/color]	    [bgcolor=white]ctrl + O[/bgcolor] [color=white] save[/color]    [bgcolor=white]ctrl + C[/bgcolor] [color=white] copy[/color]	    [bgcolor=white]ctrl + V[/bgcolor] [color=white] paste[/color]"
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="file_editor_terminal"]
+[node name="top_text" type="RichTextLabel" parent="file_editor_terminal"]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -235,6 +237,20 @@ theme_override_font_sizes/normal_font_size = 18
 bbcode_enabled = true
 text = "  not GNU nano 8.7"
 
+[node name="top_text2" type="RichTextLabel" parent="file_editor_terminal"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_right = -501.0
+offset_bottom = 26.0
+grow_horizontal = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "  not GNU nano 8.7"
+
 [node name="PauseMenu" parent="." instance=ExtResource("8_x8wt3")]
 visible = false
 layout_mode = 1
+
+[connection signal="gui_input" from="file_editor_terminal/text_box" to="file_editor_terminal/text_box" method="_on_gui_input"]

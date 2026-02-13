@@ -36,6 +36,7 @@ extends Control
 @onready var tldr_is_installed = false
 @onready var file_editor = $"../file_editor_terminal"
 @onready var file_editor_text_box = $"../file_editor_terminal/text_box"
+@onready var arg = ""
 
 func _ready():
 	text_edit.text = "[" + Global.username + "@" + Global.computername + " " + current_path +"]$ "
@@ -54,7 +55,7 @@ func _on_LineEdit_gui_input(event):
 		var line_count = text_edit.get_line_count()
 		var full_command = ""
 		var command = ""
-		var arg = ""
+		arg = ""
 		for i in range(line_count - 1, -1, -1):
 			var line = text_edit.get_line(i)
 			if not line.is_empty():
@@ -316,6 +317,7 @@ func _on_LineEdit_gui_input(event):
 				if file_to_be_edited is not Dictionary:
 					text_edit.visible = false
 					file_editor.visible = true
+					$"../file_editor_terminal/top_text".text = "[center]" + arg
 					file_editor_text_box.text = file_to_be_edited
 				elif file_to_be_edited is Dictionary:
 					text_edit.text += "\nerror: \"" + arg + "\" is a directory"
